@@ -1,17 +1,6 @@
 import localFont from "next/font/local";
-import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 const a2zFaucet = localFont({
   src: "../public/fonts/A2Z-Faucet-VAR.ttf",
@@ -28,7 +17,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${a2zFaucet.variable} h-full antialiased`}
+      className={`${a2zFaucet.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-neutral-50 text-neutral-900">
         {children}
