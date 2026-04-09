@@ -1,65 +1,101 @@
-import Image from "next/image";
+import fs from "node:fs/promises";
+import path from "node:path";
+import matter from "gray-matter";
 
-export default function Home() {
+async function getHomeContent() {
+  const filePath = path.join(process.cwd(), "content/home/index.md");
+  const raw = await fs.readFile(filePath, "utf8");
+  const { data } = matter(raw);
+  return data;
+}
+
+export default async function Home() {
+  const home = await getHomeContent();
+
+  const projects = [
+    { name: "Philival", bg: "#91DEFF", text: "#125775" },
+    { name: "Spring", bg: "#EB2F67", text: "#FFFFFF" },
+    { name: "S+R", bg: "#3D54D4", text: "#071042" },
+    { name: "Kräuter Kult", bg: "#9ECC7A", text: "#355919" },
+    { name: "Poetry", bg: "#EB352F", text: "#5C0F0F" },
+    { name: "Oof", bg: "#807040", text: "#452E16" },
+  ];
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.js file.
+    <div className="min-h-screen md:flex">
+      <aside className="flex h-auto flex-col justify-between md:fixed md:inset-y-0 md:left-0 md:h-screen md:w-[40vw]">
+        <div className="p-6">
+          <h1 className="w-full text-[clamp(3rem,8vw,9rem)] leading-[0.86] [font-family:var(--font-wordmark)]">
+            julia schäffler
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <nav
+          aria-label="Project navigation"
+          className="flex w-full overflow-x-auto md:flex-col md:overflow-visible"
+        >
+          {projects.map((project) => (
+            <a
+              key={project.name}
+              href="#"
+              style={{ backgroundColor: project.bg, color: project.text }}
+              className="inline-flex h-12 min-w-max items-center justify-center whitespace-nowrap px-4 transition-opacity hover:opacity-90 md:w-full"
+            >
+              {project.name}
+            </a>
+          ))}
+        </nav>
+      </aside>
+
+      <div className="md:ml-[40vw] md:h-screen md:w-[60vw] md:overflow-y-auto">
+        <div className="flex min-h-screen flex-col">
+          <main className="flex flex-1 flex-col gap-6 p-6">
+            <section className="flex max-w-3xl flex-col gap-6 text-neutral-700">
+              <p>{home.intro}</p>
+              <p>{home.bio}</p>
+              <button className="inline-flex w-fit rounded-none bg-neutral-900 p-2 font-black text-white transition-colors hover:bg-neutral-700">
+                get in touch
+              </button>
+            </section>
+
+            <section className="grid gap-6 text-neutral-900 md:grid-cols-2">
+              <div className="flex flex-col gap-6">
+                <h2 className="font-black text-neutral-900">
+                  Relevant Work Experience
+                </h2>
+                <ul className="flex flex-col gap-6">
+                  {home.experience?.map((entry) => (
+                    <li key={`${entry.years}-${entry.role}`}>
+                      {entry.years} {entry.role} @ {entry.company}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="flex flex-col gap-6">
+                <h2 className="font-black text-neutral-900">
+                  Education
+                </h2>
+                <ul className="flex flex-col gap-6">
+                  {home.education?.map((entry) => (
+                    <li key={`${entry.years}-${entry.degree}`}>
+                      {entry.years} {entry.degree} @ {entry.school}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </section>
+          </main>
+
+          <footer className="flex items-center justify-between p-6 text-neutral-600">
+            <a href="#" className="hover:text-neutral-900">
+              Instagram
+            </a>
+            <a href="#" className="hover:text-neutral-900">
+              Imprint
+            </a>
+          </footer>
         </div>
-      </main>
+      </div>
     </div>
   );
 }

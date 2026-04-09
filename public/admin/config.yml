@@ -6,6 +6,29 @@ media_folder: public/images
 public_folder: /images
 
 collections:
+  - name: "home"
+    label: "Home"
+    files:
+      - label: "Homepage Content"
+        name: "home"
+        file: "content/home/index.md"
+        fields:
+          - { label: "Intro", name: "intro", widget: "string" }
+          - { label: "Bio", name: "bio", widget: "text" }
+          - label: "Experience"
+            name: "experience"
+            widget: "list"
+            fields:
+              - { label: "Years", name: "years", widget: "string" }
+              - { label: "Role", name: "role", widget: "string" }
+              - { label: "Company", name: "company", widget: "string" }
+          - label: "Education"
+            name: "education"
+            widget: "list"
+            fields:
+              - { label: "Years", name: "years", widget: "string" }
+              - { label: "Degree", name: "degree", widget: "string" }
+              - { label: "School", name: "school", widget: "string" }
   - name: "projects"
     label: "Projects"
     folder: "content/projects"
