@@ -25,7 +25,12 @@ export default async function Home() {
     <div className="min-h-screen md:flex">
       <aside className="flex h-auto flex-col justify-between md:fixed md:inset-y-0 md:left-0 md:h-screen md:w-[40vw]">
         <div className="p-6">
-          <h1 className="block w-full text-[clamp(3rem,8.9vw,9rem)] leading-[0.86] font-light [font-family:var(--font-wordmark)]">
+          <h1
+            className="wordmark-enter block w-full text-[clamp(3rem,8.9vw,9rem)] leading-[0.86] font-thin [font-family:var(--font-wordmark)]"
+            style={{
+              fontFeatureSettings: '"ss02" 1, "liga" 0, "dlig" 0',
+            }}
+          >
             julia schäffler
           </h1>
         </div>
@@ -38,9 +43,9 @@ export default async function Home() {
               key={project.name}
               href="#"
               style={{ backgroundColor: project.bg, color: project.text }}
-              className="inline-flex h-12 min-w-max items-center justify-center whitespace-nowrap px-4 transition-opacity hover:opacity-90 md:w-full"
+              className="nav-link-item relative inline-flex h-12 min-w-max items-center whitespace-nowrap transition-opacity hover:opacity-90 md:w-full"
             >
-              {project.name}
+              <span className="nav-link-label">{project.name}</span>
             </a>
           ))}
         </nav>

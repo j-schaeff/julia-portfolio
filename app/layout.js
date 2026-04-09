@@ -21,7 +21,7 @@ const a2zFaucet = localFont({
 
 export const metadata = {
   title: "Julia Schaeffler | Freelance Designer",
-  description: "Portfolio website for Julia Schaeffler, freelance designer.",
+  description: "Portfolio website for Julia Schäffler, freelance designer.",
 };
 
 export default function RootLayout({ children }) {

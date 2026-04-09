@@ -22,3 +22,42 @@ body {
   font-size: 18px;
   line-height: 1.4;
 }
+
+@keyframes wordmark-overshoot-in {
+  0% {
+    transform: translateY(16px) scale(0.97);
+    opacity: 0;
+  }
+  65% {
+    transform: translateY(-3px) scale(1.012);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.wordmark-enter {
+  animation: wordmark-overshoot-in 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s both;
+}
+
+.nav-link-item {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.nav-link-label {
+  position: absolute;
+  left: 24px;
+  transform: translateX(0);
+  font-weight: 700;
+  transition:
+    left 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+    transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.nav-link-item:hover .nav-link-label {
+  left: calc(100% - 24px);
+  transform: translateX(-100%);
+}
