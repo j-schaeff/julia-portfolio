@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 const a2zFaucet = localFont({
-  src: "../public/fonts/_A2Z-Faucet-VAR[wght].ttf",
-  variable: "--font-a2z-faucet",
+  src: "../public/fonts/A2Z-Faucet-VAR.ttf",
+    variable: "--font-a2z-faucet",
   weight: "100 900",
 });
 

@@ -14,7 +14,7 @@ export default async function Home() {
 
   const projects = [
     { name: "Philival", bg: "#91DEFF", text: "#125775" },
-    { name: "Spring", bg: "#EB2F67", text: "#FFFFFF" },
+    { name: "Spring", bg: "#EB2F67", text: "#6E0E2B" },
     { name: "S+R", bg: "#3D54D4", text: "#071042" },
     { name: "Kräuter Kult", bg: "#9ECC7A", text: "#355919" },
     { name: "Poetry", bg: "#EB352F", text: "#5C0F0F" },
@@ -25,7 +25,7 @@ export default async function Home() {
     <div className="min-h-screen md:flex">
       <aside className="flex h-auto flex-col justify-between md:fixed md:inset-y-0 md:left-0 md:h-screen md:w-[40vw]">
         <div className="p-6">
-          <h1 className="w-full text-[clamp(3rem,8vw,9rem)] leading-[0.86] [font-family:var(--font-wordmark)]">
+          <h1 className="block w-full text-[clamp(3rem,8.9vw,9rem)] leading-[0.86] font-light [font-family:var(--font-wordmark)]">
             julia schäffler
           </h1>
         </div>
@@ -46,20 +46,20 @@ export default async function Home() {
         </nav>
       </aside>
 
-      <div className="md:ml-[40vw] md:h-screen md:w-[60vw] md:overflow-y-auto">
+      <div className="pt-6 md:ml-[40vw] md:h-screen md:w-[60vw] md:overflow-y-auto">
         <div className="flex min-h-screen flex-col">
-          <main className="flex flex-1 flex-col gap-6 p-6">
+          <main className="flex flex-1 flex-col gap-6 px-6 pb-6">
             <section className="flex max-w-3xl flex-col gap-6 text-neutral-700">
               <p>{home.intro}</p>
               <p>{home.bio}</p>
-              <button className="inline-flex w-fit rounded-none bg-neutral-900 p-2 font-black text-white transition-colors hover:bg-neutral-700">
+              <button className="inline-flex w-fit rounded-none bg-neutral-900 p-2 font-bold text-white transition-colors hover:bg-neutral-700">
                 get in touch
               </button>
             </section>
 
             <section className="grid gap-6 text-neutral-900 md:grid-cols-2">
               <div className="flex flex-col gap-6">
-                <h2 className="font-black text-neutral-900">
+                <h2 className="font-bold text-neutral-900">
                   Relevant Work Experience
                 </h2>
                 <ul className="flex flex-col gap-6">
@@ -72,7 +72,7 @@ export default async function Home() {
               </div>
 
               <div className="flex flex-col gap-6">
-                <h2 className="font-black text-neutral-900">
+                <h2 className="font-bold text-neutral-900">
                   Education
                 </h2>
                 <ul className="flex flex-col gap-6">
