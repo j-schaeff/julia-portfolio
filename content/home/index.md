@@ -7,24 +7,24 @@ bio: Julia is originally from Vorarlberg, Austria but spent most of her life in
 experience:
   - years: 2023–Present
     role: UX Designer
-    company: V_Labs Innovation (AUT)
+    company: V_Labs Innovation (AT)
   - years: "2023"
     role: Web & Graphic Designer
-    company: Büro X (AUT)
+    company: Büro X (AT)
   - years: 2021–2022
     role: Brand & Web Designer
-    company: NEU Scout Studio (USA)
+    company: NEU Scout Studio (US)
   - years: "2020"
     role: Design Intern
-    company: Foundation Medicine (USA)
+    company: Foundation Medicine (US)
   - years: "2019"
     role: Design Intern
-    company: Rue Guilt Groupe (USA)
+    company: Rue Guilt Groupe (US)
 education:
   - years: 2025–Present
     degree: Narrative Media & Design
-    school: Universität für angewandte Kunst, AUT
+    school: Universität für angewandte Kunst, (AT)
   - years: 2017–2020
     degree: BA Graphic & Information Design
-    school: Northeastern University Boston, MA
+    school: Northeastern University Boston, MA (US)
 ---
